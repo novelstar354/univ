@@ -1,1 +1,1258 @@
-# univ
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>スター大学 | STAR UNIVERSITY</title>
+
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135755.png">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:"Segoe UI",sans-serif;
+  background:#050816;
+  color:white;
+  overflow-x:hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* 背景 */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+  radial-gradient(circle at top,#1f3b73 0%,transparent 40%),
+  radial-gradient(circle at bottom,#4b0082 0%,transparent 35%),
+  linear-gradient(#050816,#0b1028);
+  z-index:-2;
+}
+
+.stars{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  overflow:hidden;
+}
+
+.star{
+  position:absolute;
+  width:2px;
+  height:2px;
+  background:white;
+  border-radius:50%;
+  animation: twinkle 4s infinite;
+}
+
+@keyframes twinkle{
+  0%,100%{opacity:0.2;}
+  50%{opacity:1;}
+}
+
+/* ヘッダー */
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  padding:16px 40px;
+  background:rgba(5,10,25,0.82);
+  backdrop-filter:blur(14px);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:1000;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+nav a{
+  font-size:15px;
+  letter-spacing:1px;
+  color:#dfe9ff;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.logo img{
+  width:50px;
+  height:50px;
+}
+
+.logo h1{
+  font-size:24px;
+  letter-spacing:2px;
+}
+
+nav{
+  display:flex;
+  gap:25px;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  transition:0.3s;
+  font-weight:bold;
+}
+
+nav a:hover{
+  color:#7cc7ff;
+}
+
+/* ヒーロー */
+.hero{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  flex-direction:column;
+  padding:20px;
+}
+
+.hero h2{
+  font-size:72px;
+  margin-bottom:20px;
+  background:linear-gradient(90deg,#fff,#8ac6ff,#d6a4ff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+  max-width:850px;
+  line-height:1.8;
+  font-size:20px;
+  color:#d8e6ff;
+}
+
+.hero button{
+  margin-top:35px;
+  padding:15px 35px;
+  border:none;
+  border-radius:40px;
+  background:linear-gradient(90deg,#3478ff,#7d4dff);
+  color:white;
+  font-size:18px;
+  cursor:pointer;
+  transition:0.3s;
+  box-shadow:0 0 20px rgba(80,130,255,0.5);
+}
+
+.hero button:hover{
+  transform:translateY(-4px) scale(1.03);
+}
+.hero-info{
+  margin-top:60px;
+  display:flex;
+  gap:30px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.hero-info div{
+  background:rgba(255,255,255,0.07);
+  padding:20px 30px;
+  border-radius:20px;
+  min-width:180px;
+  backdrop-filter:blur(10px);
+}
+
+.hero-info h3{
+  font-size:15px;
+  color:#8fb7ff;
+  margin-bottom:10px;
+}
+
+.hero-info p{
+  font-size:28px;
+  font-weight:bold;
+  color:white;
+}
+/* セクション */
+section{
+  padding:110px 8%;
+}
+
+.section-title{
+  font-size:42px;
+  margin-bottom:50px;
+  text-align:center;
+}
+
+/* カード */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(10px);
+  padding:30px;
+  border-radius:24px;
+  transition:0.35s;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  background:rgba(255,255,255,0.1);
+}
+
+.card h3{
+  margin-bottom:15px;
+  font-size:26px;
+}
+
+.card p{
+  line-height:1.8;
+  color:#d0dcff;
+}
+
+/* 学部 */
+.faculty{
+  display:flex;
+  flex-wrap:wrap;
+  gap:18px;
+  justify-content:center;
+}
+
+.faculty div{
+  background:rgba(255,255,255,0.08);
+  padding:18px 28px;
+  border-radius:50px;
+  transition:0.3s;
+}
+
+.faculty div:hover{
+  background:#3f65ff;
+  transform:scale(1.05);
+}
+
+/* フッター */
+footer{
+  text-align:center;
+  padding:40px;
+  border-top:1px solid rgba(255,255,255,0.1);
+  color:#b7c7e8;
+}
+
+/* モバイル */
+@media(max-width:800px){
+
+  header{
+    flex-direction:column;
+    gap:15px;
+  }
+
+  nav{
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+  .hero h2{
+    font-size:46px;
+  }
+
+  .hero p{
+    font-size:17px;
+  }
+
+}
+/* 学部リンク */
+
+.faculty div a{
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* 上に行くボタン */
+
+.top-btn{
+  position:fixed;
+  right:25px;
+  bottom:25px;
+  width:58px;
+  height:58px;
+  border:none;
+  border-radius:50%;
+  font-size:24px;
+  cursor:pointer;
+  color:white;
+  background:linear-gradient(135deg,#3478ff,#7d4dff);
+  box-shadow:0 0 20px rgba(70,120,255,0.5);
+  transition:0.3s;
+  z-index:9999;
+
+  opacity:0;
+  pointer-events:none;
+}
+
+.top-btn.show{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.top-btn:hover{
+  transform:translateY(-5px) scale(1.08);
+}
+/* 学部一覧を縦並び */
+
+.faculty{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:18px;
+}
+
+.faculty div{
+  width:min(500px,90%);
+  text-align:center;
+  background:rgba(255,255,255,0.08);
+  padding:20px;
+  border-radius:18px;
+  transition:0.3s;
+}
+
+.faculty div:hover{
+  background:#3f65ff;
+  transform:translateY(-5px);
+}
+
+.faculty div a{
+  color:white;
+  text-decoration:none;
+  font-size:20px;
+  font-weight:bold;
+  display:block;
+}
+/* 上に戻るボタン */
+
+.top-btn{
+  position:fixed;
+  right:25px;
+  bottom:25px;
+
+  width:60px;
+  height:60px;
+
+  border:none;
+  border-radius:50%;
+
+  font-size:26px;
+  font-weight:bold;
+
+  color:white;
+
+  background:linear-gradient(135deg,#3478ff,#7d4dff);
+
+  cursor:pointer;
+
+  box-shadow:0 0 25px rgba(70,120,255,0.5);
+
+  transition:0.3s;
+
+  z-index:9999;
+
+  opacity:0;
+  pointer-events:none;
+}
+
+.top-btn.show{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.top-btn:hover{
+  transform:translateY(-6px) scale(1.08);
+}
+/* 各学部紹介を縦並び */
+
+#faculty-detail .cards{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:28px;
+}
+
+/* 各カード */
+
+#faculty-detail .card{
+  width:min(850px,95%);
+  padding:35px;
+
+  background:rgba(255,255,255,0.06);
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  border-radius:24px;
+
+  backdrop-filter:blur(10px);
+
+  transition:0.35s;
+}
+
+#faculty-detail .card:hover{
+  transform:translateY(-6px);
+  background:rgba(255,255,255,0.1);
+}
+
+#faculty-detail .card h3{
+  font-size:32px;
+  margin-bottom:18px;
+}
+
+#faculty-detail .card p{
+  line-height:1.9;
+  font-size:17px;
+  color:#d0dcff;
+}
+section{
+  scroll-margin-top:120px;
+}
+.card{
+  opacity:0;
+  transform:translateY(40px);
+  animation:fadeUp 1s forwards;
+}
+
+@keyframes fadeUp{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+nav a{
+  position:relative;
+}
+
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:2px;
+  background:#7cc7ff;
+  transition:0.3s;
+}
+
+nav a:hover::after{
+  width:100%;
+}
+/* headerアニメーション */
+
+header{
+  transition:
+  transform 0.4s ease,
+  opacity 0.4s ease;
+}
+
+/* header隠す */
+
+header.hide{
+  transform:translateY(-120%);
+  opacity:0;
+}
+/* 学部リンク全体 */
+
+.faculty-link{
+  width:min(500px,90%);
+  text-decoration:none;
+  color:white;
+  display:block;
+}
+
+/* ボタン本体 */
+
+.faculty-link div{
+
+  width:100%;
+
+  text-align:center;
+
+  background:rgba(255,255,255,0.08);
+
+  padding:20px;
+
+  border-radius:18px;
+
+  transition:0.3s;
+
+  font-size:20px;
+
+  font-weight:bold;
+}
+
+/* hover */
+
+.faculty-link div:hover{
+
+  background:#3f65ff;
+
+  transform:translateY(-5px);
+
+  box-shadow:
+  0 10px 30px rgba(70,120,255,0.35);
+}
+/* ハンバーガー */
+
+#menuBtn{
+  position:fixed;
+
+  top:20px;
+  right:20px;
+
+  width:58px;
+  height:58px;
+
+  border:none;
+  border-radius:16px;
+
+  background:rgba(20,30,60,0.9);
+
+  color:white;
+
+  font-size:30px;
+
+  cursor:pointer;
+
+  z-index:2000;
+
+  backdrop-filter:blur(12px);
+
+  border:1px solid rgba(255,255,255,0.1);
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  opacity:0;
+  pointer-events:none;
+
+  transition:0.35s;
+}
+
+/* 表示 */
+
+#menuBtn.show{
+  opacity:1;
+  pointer-events:auto;
+}
+
+/* hover */
+
+#menuBtn:hover{
+  transform:scale(1.08);
+  background:#3f65ff;
+}
+/* ハンバーガーメニュー用 */
+
+/* header用nav */
+
+.header-nav{
+  display:flex;
+  gap:25px;
+  align-items:center;
+}
+
+.header-nav a{
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+  position:relative;
+}
+
+/* モバイル */
+
+@media(max-width:800px){
+
+  .header-nav{
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+}
+/* 背景暗転 */
+
+.menu-overlay{
+
+  position:fixed;
+  inset:0;
+
+  background:rgba(0,0,0,0.45);
+
+  opacity:0;
+  pointer-events:none;
+
+  transition:0.3s;
+
+  z-index:1400;
+}
+
+.menu-overlay.show{
+  opacity:1;
+  pointer-events:auto;
+}
+/* ハンバーガー専用メニュー */
+
+.hamburger-menu{
+
+  position:fixed;
+
+  top:0;
+  right:-340px;
+
+  width:300px;
+  height:100vh;
+
+  background:
+  linear-gradient(
+    180deg,
+    rgba(15,20,40,0.98),
+    rgba(5,10,25,0.98)
+  );
+
+  backdrop-filter:blur(18px);
+
+  padding:110px 30px;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:22px;
+
+  z-index:1600;
+
+  transition:0.45s ease;
+
+  border-left:
+  1px solid rgba(255,255,255,0.08);
+
+  box-shadow:
+  -10px 0 40px rgba(0,0,0,0.45);
+}
+
+/* 開く */
+
+.hamburger-menu.open{
+  right:0;
+}
+
+/* リンク */
+
+.hamburger-menu a{
+
+  color:white;
+
+  text-decoration:none;
+
+  font-size:19px;
+
+  padding:14px 18px;
+
+  border-radius:14px;
+
+  transition:0.3s;
+}
+
+/* hover */
+
+.hamburger-menu a:hover{
+
+  background:
+  rgba(70,120,255,0.18);
+
+  transform:translateX(6px);
+}
+
+/* 区切り線 */
+
+.hamburger-menu hr{
+
+  border:none;
+
+  border-top:
+  1px solid rgba(255,255,255,0.08);
+
+  margin:10px 0;
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars" id="stars"></div>
+
+<header id="header">
+  <div class="logo">
+    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png">
+    <h1>STAR UNIVERSITY</h1>
+  </div>
+
+ <!-- nav -->
+<nav class="header-nav">
+  <a href="#about">大学紹介</a>
+  <a href="#news">ニュース</a>
+  <a href="#faculty-detail">学部一覧</a>
+  <a href="#research">研究</a>
+  <a href="#life">学生生活</a>
+  <a href="#admission">入学案内</a>
+</nav>
+</header>
+<!-- ハンバーガーメニュー専用 -->
+
+<div class="hamburger-menu" id="hamburgerMenu">
+
+  <a href="#about">大学紹介</a>
+
+  <a href="#faculty-detail">学部一覧</a>
+
+  <a href="#research">研究プロジェクト</a>
+
+  <a href="#life">学生生活</a>
+
+  <a href="#admission">入学案内</a>
+
+  
+</div>
+
+<!-- 背景 -->
+
+<div class="menu-overlay" id="overlay"></div>
+<div class="menu-overlay" id="overlay"></div>
+<button id="menuBtn">
+☰
+</button>
+
+<section class="hero">
+  <h2>スター大学</h2>
+
+  <p>
+    スター帝国中央教育機関として設立された最高学術大学。
+    宇宙工学・AI・量子科学・経済・帝国法学など、
+    次世代文明を支える研究を行っています。
+  </p>
+
+  <button onclick="location.href='#about'">
+    大学を見る
+  </button>
+</section>
+
+<section id="about">
+  <h2 class="section-title">大学紹介</h2>
+
+  <div class="cards">
+    <div class="card">
+      <h3>帝国最高学府</h3>
+      <p>
+        スター帝国政府直属の国立大学として、
+        帝国中から優秀な学生が集まる超名門大学です。
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>宇宙開発研究</h3>
+      <p>
+        STAR SPACEと共同で、
+        超光速エンジン・軌道都市・火星開発などを研究しています。
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>AI都市キャンパス</h3>
+      <p>
+        AI交通網・自動講義・ホログラム教室を備えた
+        未来型スマートキャンパスです。
+      </p>
+    </div>
+  </div>
+</section>
+<section id="news">
+
+<h2 class="section-title">最新ニュース</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>2026.05.18</h3>
+<p>
+STAR SPACEとの共同研究施設が完成しました。
+</p>
+</div>
+
+<div class="card">
+<h3>2026.05.10</h3>
+<p>
+量子科学部が新型量子通信に成功。
+</p>
+</div>
+
+<div class="card">
+<h3>2026.04.28</h3>
+<p>
+火星交換留学プログラム募集開始。
+</p>
+</div>
+
+</div>
+</section>
+<section id="faculty">
+
+  <h2 class="section-title">学部一覧</h2>
+
+  <div class="faculty">
+
+    <a href="#space" class="faculty-link">
+      <div>宇宙工学部</div>
+    </a>
+
+    <a href="#quantum" class="faculty-link">
+      <div>量子科学部</div>
+    </a>
+
+    <a href="#ai" class="faculty-link">
+      <div>AI情報学部</div>
+    </a>
+
+    <a href="#law" class="faculty-link">
+      <div>帝国法学部</div>
+    </a>
+
+    <a href="#economy" class="faculty-link">
+      <div>経済戦略学部</div>
+    </a>
+
+    <a href="#architecture" class="faculty-link">
+      <div>星間建築学部</div>
+    </a>
+
+    <a href="#military" class="faculty-link">
+      <div>軍事防衛学部</div>
+    </a>
+
+    <a href="#planet" class="faculty-link">
+      <div>惑星環境学部</div>
+    </a>
+
+    <a href="#medical" class="faculty-link">
+      <div>未来医学部</div>
+    </a>
+
+  </div>
+
+</section>
+<!--<section id="faculty">
+
+  <h2 class="section-title">学部一覧</h2>
+
+  <div class="faculty">
+
+    <a href="#space" class="faculty-link">
+  <div>
+    宇宙工学部
+  </div>
+</a>
+
+    <div>
+      <a href="#quantum">量子科学部</a>
+    </div>
+
+    <div>
+      <a href="#ai">AI情報学部</a>
+    </div>
+
+    <div>
+      <a href="#law">帝国法学部</a>
+    </div>
+
+    <div>
+      <a href="#economy">経済戦略学部</a>
+    </div>
+
+    <div>
+      <a href="#architecture">星間建築学部</a>
+    </div>
+
+    <div>
+      <a href="#military">軍事防衛学部</a>
+    </div>
+
+    <div>
+      <a href="#planet">惑星環境学部</a>
+    </div>
+
+    <div>
+      <a href="#medical">未来医学部</a>
+    </div>
+
+  </div>
+
+</section>-->
+<!-- 学部詳細 -->
+<section id="faculty-detail">
+
+  <h2 class="section-title">各学部紹介</h2>
+
+  <div class="cards">
+
+    <div class="card" id="space">
+      <h3>宇宙工学部</h3>
+      <p>
+        ロケット工学・ワープ航法・人工衛星設計などを学ぶ、
+        スター大学最大規模の学部。
+        STAR SPACEと共同研究を行っています。
+      </p>
+    </div>
+
+    <div class="card" id="quantum">
+      <h3>量子科学部</h3>
+      <p>
+        量子通信、量子コンピュータ、
+        次世代エネルギー理論を研究する最先端学部です。
+      </p>
+    </div>
+
+    <div class="card" id="ai">
+      <h3>AI情報学部</h3>
+      <p>
+        帝国AIネットワークや都市管理システムを支える
+        超高性能AIを開発しています。
+      </p>
+    </div>
+
+    <div class="card" id="law">
+      <h3>帝国法学部</h3>
+      <p>
+        スター帝国憲法・宇宙法・AI法など、
+        未来社会に必要な法体系を学びます。
+      </p>
+    </div>
+
+    <div class="card" id="economy">
+      <h3>経済戦略学部</h3>
+      <p>
+        スターコイン経済、
+        銀河間市場戦略を研究する経済専門学部です。
+      </p>
+    </div>
+
+    <div class="card" id="architecture">
+      <h3>星間建築学部</h3>
+      <p>
+        宇宙都市・軌道コロニー・巨大ステーションの
+        建築技術を学びます。
+      </p>
+    </div>
+
+    <div class="card" id="military">
+      <h3>軍事防衛学部</h3>
+      <p>
+        宇宙防衛システム、
+        戦術AI、帝国艦隊運用理論を研究しています。
+      </p>
+    </div>
+
+    <div class="card" id="planet">
+      <h3>惑星環境学部</h3>
+      <p>
+        テラフォーミングや惑星環境制御、
+        生態系保全技術を研究する学部です。
+      </p>
+    </div>
+
+    <div class="card" id="medical">
+      <h3>未来医学部</h3>
+      <p>
+        ナノ医療・再生医療・宇宙医療技術を開発する
+        医学研究機関です。
+      </p>
+    </div>
+
+  </div>
+
+</section>
+<section id="research">
+  <h2 class="section-title">研究プロジェクト</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>ST-X Drive</h3>
+      <p>
+        恒星間航行用ワープドライブの研究。
+        STAR SPACEとの共同開発。
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>STAR AI CORE</h3>
+      <p>
+        帝国都市管理AIの開発。
+        交通・医療・行政を統合制御します。
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Terraform Project</h3>
+      <p>
+        火星および氷惑星の居住化研究。
+        大気生成と人工海洋技術を開発中。
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section id="life">
+  <h2 class="section-title">学生生活</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>宇宙寮</h3>
+      <p>
+        全学生にAI管理スマート寮を提供。
+        重力調整ルームも完備。
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>部活動</h3>
+      <p>
+        宇宙飛行部、ロボット開発部、
+        VRゲーム部など最先端クラブ多数。
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>スターコイン</h3>
+      <p>
+        学内決済は全てスターコイン。
+        カフェや売店もキャッシュレスです。
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section id="admission">
+  <h2 class="section-title">入学案内</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>一般入試</h3>
+      <p>
+        帝国共通学力試験と面接によって選抜。
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>特待制度</h3>
+      <p>
+        優秀者には学費免除と研究支援金を支給。
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>宇宙留学制度</h3>
+      <p>
+        月面都市・軌道コロニーへの
+        交換留学プログラムがあります。
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+
+<div class="footer-grid">
+
+<div>
+<h3>STAR UNIVERSITY</h3>
+<p>Beyond The Stars.</p>
+</div>
+
+<div>
+<h4>Links</h4>
+<p>入学案内</p>
+<p>研究</p>
+<p>学生生活</p>
+</div>
+
+<div>
+<h4>Contact</h4>
+<p>Central Galaxy District</p>
+<p>staruniv@empire.st</p>
+</div>
+
+</div>
+
+<p class="copyright">
+© STAR UNIVERSITY
+</p>
+
+</footer>
+<!-- 上に戻るボタン -->
+
+<button class="top-btn" id="topBtn">
+  ↑
+</button>
+<script>
+
+/* 星空生成 */
+
+const stars = document.getElementById("stars");
+const cards = document.querySelectorAll(".card");
+
+cards.forEach((card,index)=>{
+  card.style.animationDelay = index * 0.12 + "s";
+});
+for(let i = 0; i < 180; i++){
+
+  const star = document.createElement("div");
+
+  star.classList.add("star");
+
+  star.style.left = Math.random() * 100 + "%";
+  star.style.top = Math.random() * 100 + "%";
+
+  const size = Math.random() * 3;
+
+  star.style.width = size + "px";
+  star.style.height = size + "px";
+
+  star.style.animationDelay = Math.random() * 5 + "s";
+
+  stars.appendChild(star);
+}
+
+
+/* 上に戻るボタン */
+
+const topBtn = document.getElementById("topBtn");
+
+window.addEventListener("scroll",()=>{
+
+  if(window.scrollY > 400){
+
+    topBtn.classList.add("show");
+
+  }else{
+
+    topBtn.classList.remove("show");
+
+  }
+
+});
+
+topBtn.addEventListener("click",()=>{
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+});
+/* header切り替え */
+
+const header = document.getElementById("header");
+const menuBtn = document.getElementById("menuBtn");
+
+let lastScroll = 0;
+
+window.addEventListener("scroll",()=>{
+
+  const currentScroll = window.scrollY;
+
+  /* 下スクロール */
+
+  if(currentScroll > lastScroll && currentScroll > 120){
+
+    header.classList.add("hide");
+
+    menuBtn.classList.add("show");
+
+  }
+
+  /* 上スクロール */
+
+  else{
+
+    header.classList.remove("hide");
+
+    menuBtn.classList.remove("show");
+
+  }
+
+  lastScroll = currentScroll;
+
+});
+
+/* ハンバーガーメニュー */
+
+const hamburgerMenu =
+document.getElementById("hamburgerMenu");
+
+const overlay =
+document.getElementById("overlay");
+
+/* 開閉 */
+
+menuBtn.addEventListener("click",()=>{
+
+  hamburgerMenu.classList.toggle("open");
+
+  overlay.classList.toggle("show");
+
+});
+
+/* 背景クリックで閉じる */
+
+overlay.addEventListener("click",()=>{
+
+  hamburgerMenu.classList.remove("open");
+
+  overlay.classList.remove("show");
+
+});
+
+/* リンク押したら閉じる */
+
+document
+.querySelectorAll(".hamburger-menu a")
+.forEach(link=>{
+
+  link.addEventListener("click",()=>{
+
+    hamburgerMenu.classList.remove("open");
+
+    overlay.classList.remove("show");
+
+  });
+
+});
+</script>
+
+</body>
+</html>
